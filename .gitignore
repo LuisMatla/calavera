@@ -1,0 +1,29 @@
+# Archivos de ensamblador
+*.asm
+*.inc
+
+# Archivos de Proteus
+*.pdsprj
+*.pdsprj.*
+
+# Archivos PDF
+*.pdf
+
+# Backups
+Project Backups/
+
+# Archivo Python antiguo
+Equipo_3_Actividad_12.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
