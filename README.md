@@ -21,8 +21,8 @@ Esta aplicación es una ofrenda virtual interactiva que combina elementos tradic
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![tkinter](https://img.shields.io/badge/tkinter-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Pillow](https://img.shields.io/badge/Pillow-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![pygame](https://img.shields.io/badge/pygame-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pillow](https://img.shields.io/badge/Pillow-FF6B6B?style=for-the-badge&logo=python&logoColor=white)
+![pygame](https://img.shields.io/badge/pygame-FF8C00?style=for-the-badge&logo=python&logoColor=white)
 
 ## 📋 Requisitos
 
