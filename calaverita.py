@@ -10,7 +10,7 @@ class VentanaAnimada:
         self.root = root
         self.root.title("Ofrenda Virtual")
         self.root.geometry("1150x750")
-        # cargar icono compatible con linux.
+        #cargar icono compatible con linux.
         try:
             icon_image = Image.open("calavera.ico")
             self.icon_photo = ImageTk.PhotoImage(icon_image)
@@ -18,36 +18,36 @@ class VentanaAnimada:
         except Exception as e:
             print(f"Error al cargar el icono: {e}")
         
-        # inicializar pygame para el audio.
+        #inicializar pygame para el audio.
         pygame.mixer.init()
         try:
             pygame.mixer.music.load("La Muerte y La Ecuación.mp3")
-            pygame.mixer.music.play(-1)  # reproducir música automáticamente en loop.
+            pygame.mixer.music.play(-1)  #reproducir música automáticamente en loop.
         except Exception as e:
             print(f"Error al cargar la música: {e}")
         
-        # marco decorativo.
+        #marco decorativo.
         self.marco = tk.Frame(self.root, bg="#FF8C00", bd=10)
         self.marco.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
         
-        # canvas.
+        #canvas.
         self.canvas = tk.Canvas(self.marco, bg="#B2EBF2")
         self.canvas.pack(fill=tk.BOTH, expand=True)
         
-        # variables de estado.
+        #variables de estado.
         self.frames_gifs = {'izquierda': None, 'centro': None, 'derecha': None}
         self.frame_actual = {'izquierda': 0, 'centro': 0, 'derecha': 0}
         self.gif_en_canvas = {'izquierda': None, 'centro': None, 'derecha': None}
         
-        # cargar y colocar las imágenes de tumbitas.
+        #cargar y colocar las imágenes de tumbitas.
         try:
-            # cargar imagen de diana.
+            #cargar imagen de diana.
             diana_img = Image.open("tumbitawoo.png")
             diana_img = diana_img.resize((150, 140), Image.LANCZOS)
             self.diana_photo = ImageTk.PhotoImage(diana_img)
             self.canvas.create_image(100, 547, anchor="nw", image=self.diana_photo)
             
-            # cargar imagen de woo.
+            #cargar imagen de woo.
             woo_img = Image.open("tumbitadiana.png")
             woo_img = woo_img.resize((150, 140), Image.LANCZOS)
             self.woo_photo = ImageTk.PhotoImage(woo_img)
@@ -55,30 +55,30 @@ class VentanaAnimada:
         except Exception as e:
             print(f"Error al cargar las imágenes: {e}")
         
-        # variables para velitas.
+        #variables para velitas.
         self.velita_frames = []
         self.velita_items = []
         self.velita_index = 0
         
-        # línea decorativa.
+        #línea decorativa.
         self.canvas.create_line(15, 20, 1100, 15, fill="black", width=2)
         
-        # cargar imágenes del papel picado.
+        #cargar imágenes del papel picado.
         self.imagenes_papel = []
         for i in range(1, 5):
             imagen = Image.open(f"papel{i}.png").resize((50, 42), Image.LANCZOS)
             imagen_tk = ImageTk.PhotoImage(imagen)
             self.imagenes_papel.append(imagen_tk)
         
-        # colocar papeles picados.
+        #colocar papeles picados.
         self.colocar_papeles_picados()
         
-        # cursor personalizado.
+        #cursor personalizado.
         cursor_image = Image.open("calaveramouse.png").resize((40, 40), Image.LANCZOS)
         self.imagen_cursor_tk = ImageTk.PhotoImage(cursor_image)
         self.imagen_cursor = self.canvas.create_image(0, 0, anchor="center", image=self.imagen_cursor_tk)
         
-        # dividir la calaverita en dos partes.
+        #dividir la calaverita en dos partes.
         self.parte1 = """Estaba la muerte resolviendo una ecuacion diferencial,
 Que ni la maestra Diana había podido controlar
 Pues la integración por partes tampoco era el método para avanzar.
@@ -100,10 +100,10 @@ les venimos a implorar
 Ya que ni Luis, Poli, Samuel y Matla lograron concretar
 Así que una calaverita se pusieron a redactar."""
 
-        # variable para controlar qué parte se muestra.
+        #variable para controlar qué parte se muestra.
         self.mostrar_parte1 = True
         
-        # crear un rectángulo semitransparente para el fondo del texto.
+        #crear un rectángulo semitransparente para el fondo del texto.
         self.texto_bg = self.canvas.create_rectangle(
             150, 150, 950, 400,
             fill='#B2EBF2',
@@ -111,7 +111,7 @@ Así que una calaverita se pusieron a redactar."""
             width=8
         )
         
-        # texto inicial parte 1.
+        #texto inicial parte 1.
         self.texto_calaverita = self.canvas.create_text(
             550, 275,
             text=self.parte1,
@@ -121,7 +121,7 @@ Así que una calaverita se pusieron a redactar."""
             justify="center"
         )
         
-        # botón para cambiar entre partes.
+        #botón para cambiar entre partes.
         self.boton_cambiar = tk.Button(
             self.canvas,
             text="Siguiente Parte",
@@ -138,33 +138,33 @@ Así que una calaverita se pusieron a redactar."""
             anchor="center"
         )
         
-        # cargar gifs y velitas.
+        #cargar gifs y velitas.
         self.cargar_gifs()
         self.cargar_velitas()
         
-        # configuración de animación del texto.
+        #configuración de animación del texto.
         self.animacion = itertools.cycle([0, 2, 4, 2, 0, -2, -4, -2])
         self.animar_calaverita()
         
-        # colores para el fondo modificados para día de muertos.
+        #colores para el fondo modificados para día de muertos.
         self.colores = cycle([
-            '#800020',  # naranja cempasúchil.
-            '#4B0082',  # índigo morado tradicional.
-            '#8B4513',  # marrón color tierra barro.
+            '#800020',  #naranja cempasúchil.
+            '#4B0082',  #índigo morado tradicional.
+            '#8B4513',  #marrón color tierra barro.
             '#8b1362',
             '#c5c174',
-            '#138b75'   # dorado para las veladoras.
+            '#138b75'   #dorado para las veladoras.
         ])
         
-        # configuración del cursor.
+        #configuración del cursor.
         self.root.config(cursor="none")
         self.canvas.bind("<Motion>", self.actualizar_posicion)
         
-        # iniciar animaciones.
+        #iniciar animaciones.
         self.actualizar_velitas()
         self.animar_gifs()
         
-        # configurar el cierre de la ventana.
+        #configurar el cierre de la ventana.
         self.root.protocol("WM_DELETE_WINDOW", self.cerrar_aplicacion)
 
     def cerrar_aplicacion(self):
