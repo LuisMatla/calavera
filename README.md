@@ -17,6 +17,13 @@ Esta aplicación es una ofrenda virtual interactiva que combina elementos tradic
 - 🪦 **Tumbitas decorativas**: Imágenes de tumbitas personalizadas
 - 🌈 **Fondo dinámico**: Cambio automático de colores temáticos
 
+## 🔧 Tecnologías Utilizadas
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![tkinter](https://img.shields.io/badge/tkinter-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pillow](https://img.shields.io/badge/Pillow-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![pygame](https://img.shields.io/badge/pygame-3776AB?style=for-the-badge&logo=python&logoColor=white)
+
 ## 📋 Requisitos
 
 - 🐍 Python 3.x
